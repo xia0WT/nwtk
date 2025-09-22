@@ -48,13 +48,13 @@ jobs:
           pip install build twine
 
       - name: Build package
-        run: python -m build
+        run: hatch build
 
       - name: Publish to TestPyPI
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
-        run: python -m twine upload --repository testpypi dist/*
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: hatch publish testpypi --username __token__ --password ${{ secrets.PYPI_TOKEN }}
 
   publish-pypi:
     if: startsWith(github.ref, 'refs/tags/v')
@@ -75,10 +75,10 @@ jobs:
           pip install build twine
 
       - name: Build package
-        run: python -m build
+        run: hatch build
 
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: python -m twine upload dist/*
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: hatch publish pypi --username __token__ --password <YOUR_PYPI_TOKEN>
