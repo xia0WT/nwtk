@@ -53,8 +53,8 @@ jobs:
       - name: Publish to TestPyPI
         env:
           HATCH_INDEX_USER: __token__
-          HATCH_INDEX_AUTH: ${{ secrets.PYPI_TEST_TOKEN }}
-        run: hatch publish testpypi
+          HATCH_INDEX_AUTH: ${{ secrets.NWTK_PYPI_TEST_TOKEN }}
+        run: hatch publish testpypi dist/*
 
   publish-pypi:
     if: startsWith(github.ref, 'refs/tags/v')
@@ -80,5 +80,5 @@ jobs:
       - name: Publish to PyPI
         env:
           HATCH_INDEX_USER: __token__
-          HATCH_INDEX_AUTH: ${{ secrets.PYPI_TOKEN }}
-        run: hatch publish pypi
+          HATCH_INDEX_AUTH: ${{ secrets.NWTK_PYPI_TOKEN }}
+        run: hatch publish pypi dist/*
