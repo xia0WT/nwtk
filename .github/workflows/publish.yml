@@ -52,8 +52,8 @@ jobs:
 
       - name: Publish to TestPyPI
         env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
+          HATCH_INDEX_USER: __token__
+          HATCH_INDEX_AUTH: ${{ secrets.PYPI_TEST_TOKEN }}
         run: hatch publish testpypi
 
   publish-pypi:
@@ -79,6 +79,6 @@ jobs:
 
       - name: Publish to PyPI
         env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+          HATCH_INDEX_USER: __token__
+          HATCH_INDEX_AUTH: ${{ secrets.PYPI_TOKEN }}
         run: hatch publish pypi
