@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "nwtk"        
-version = "0.1.0"
+version = "auto"
 description = "Your project description here"
 readme = "README.md"
 requires-python = ">=3.10"
