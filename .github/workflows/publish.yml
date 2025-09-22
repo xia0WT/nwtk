@@ -53,8 +53,8 @@ jobs:
       - name: Publish to TestPyPI
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: hatch publish testpypi --user __token__ --password ${{ secrets.PYPI_TEST_TOKEN }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
+        run: hatch publish testpypi
 
   publish-pypi:
     if: startsWith(github.ref, 'refs/tags/v')
@@ -81,4 +81,4 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: hatch publish pypi --user __token__ --password ${{ secrets.PYPI_TOKEN }}
+        run: hatch publish pypi
